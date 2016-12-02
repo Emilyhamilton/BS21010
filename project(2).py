@@ -10,7 +10,7 @@ import time
 x = 1
 info = ('This program runs the spectrophotometer readings and saves the results in a file named absorbance(x).txt. Where x is the number of different experiments the user runs. The data is saved in a tabulated format, with the headers of wl (wavelength in nm), and rd (reading). The data is ready for statistical analysis in R studio. Use constant time increments and wavelength ranges for more reliable results.\n')
 input('Insert cuvette! Then press enter.')
-a = input('Are you ready? (yes/no/help) ')
+a = input('Are you ready? (yes/no/help): ')
 if a == 'help':
     print(info)
     a = input('Are you ready? (yes/no): ')
@@ -42,7 +42,7 @@ if a == 'yes':
         f = int(input('Enter minimum wavelength (nm): '))
         g = int(input('Enter maximum wavelength (nm): '))
         j = input('Would you like to use the same increment? (yes/no)')
-        myfile.write('#Min wavelength:{:5} Max wavelength:{:5} Increments:{:5}\n'.format(b,d,i)) 
+        myfile.write('#Min wavelength:{:5} Max wavelength:{:5} Increments:{:5}\n'.format(f,g,i)) 
         myfile.write('wl\trd')
         spec = Spectrometer()
         spec.set_wavelength(f)
@@ -64,7 +64,7 @@ if a == 'yes':
                 reading =  spec.absorbance()
                 myfile.write('\n{}\t{}'.format(h,reading[0]))
                 print('The absorbance at {} is {}'.format(reading[1], reading[0]))
-            e = input('Do you wish to use another smaple/filter? (yes/no): ')
+            e = input('Do you wish to use another sample/filter? (yes/no): ')
     else:
         print('Fine…')
 else:
